@@ -18,7 +18,7 @@ const intro: BlockDefinition = {
   name: 'intro',
   contentMode: 'text',
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
   },
   contentHints: { contentBody: true },
   compile: (block) => `<div class="${cls(block)}">${md(block)}</div>`,
@@ -34,7 +34,7 @@ const featured: BlockDefinition = {
     link: { label: 'Link' },
   },
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow', 'overflow', 'opacity'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow', 'overflow', 'opacity'],
     img: ['text-align', 'width', 'max-width', 'height', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     source: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
     author: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding'],
@@ -70,8 +70,8 @@ const category: BlockDefinition = {
     title: { label: 'Title' },
   },
   styleHints: {
-    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    title: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding', 'line-height', 'border-color'],
+    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'gap', 'opacity', 'box-shadow'],
+    title: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding', 'line-height', 'border-width', 'border-style', 'border-color'],
   },
   contentHints: { contentChildren: true },
   compile: (block) => {
@@ -143,7 +143,7 @@ const tools: BlockDefinition = {
     title: { label: 'Title' },
   },
   styleHints: {
-    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'gap', 'opacity', 'box-shadow'],
     title: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding'],
   },
   contentHints: { contentChildren: true },
@@ -202,7 +202,7 @@ const personalNote: BlockDefinition = {
   name: 'personalNote',
   contentMode: 'text',
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
   },
   contentHints: { contentBody: true },
   compile: (block) => `<div class="${cls(block)}">${md(block)}</div>`,
@@ -312,7 +312,7 @@ const outro: BlockDefinition = {
     cta: { label: 'CTA button' },
   },
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     cta: ['display', 'text-align', 'color', 'font-family', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow'],
   },
   contentHints: { contentBody: true },
