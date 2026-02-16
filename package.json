@@ -1,0 +1,36 @@
+{
+  "name": "@mklyml/kits",
+  "version": "0.1.2",
+  "license": "Apache-2.0",
+  "description": "Block kits for mkly — newsletter and documentation block types",
+  "type": "module",
+  "exports": {
+    "./newsletter": {
+      "types": "./dist/newsletter.d.ts",
+      "import": "./dist/newsletter.js"
+    },
+    "./docs": {
+      "types": "./dist/docs.d.ts",
+      "import": "./dist/docs.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "bun run build",
+    "typecheck": "bunx tsc --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@mklyml/core": "^0.1.0",
+    "zod": "^4.3.6"
+  },
+  "peerDependencies": {
+    "@mklyml/core": ">=0.1.0"
+  },
+  "devDependencies": {
+    "tsup": "8.5.0",
+    "typescript": "5.8.2",
+    "@types/bun": "latest"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["bun-types"],
+    "baseUrl": ".",
+    "paths": {
+      "@mklyml/core": ["../mkly/src/index.ts"]
+    }
+  },
+  "include": [
+    "newsletter/src/**/*.ts",
+    "newsletter/tests/**/*.ts",
+    "docs/src/**/*.ts",
+    "docs/tests/**/*.ts"
+  ]
+}
