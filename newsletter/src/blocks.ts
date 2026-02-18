@@ -88,30 +88,38 @@ const item: BlockDefinition = {
   contentMode: 'mixed',
   targets: {
     img: { label: 'Image' },
+    body: { label: 'Body' },
     source: { label: 'Source badge' },
+    meta: { label: 'Meta' },
     link: { label: 'Link' },
   },
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    img: ['text-align', 'width', 'height', 'max-width', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    self: ['display', 'grid-template-columns', 'gap', 'align-items', 'text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow', 'overflow'],
+    img: ['text-align', 'width', 'height', 'max-width', 'aspect-ratio', 'object-fit', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    body: ['overflow', 'min-width', 'padding'],
     source: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
+    meta: ['display', 'color', 'font-size', 'font-weight', 'margin', 'padding', 'opacity', 'letter-spacing'],
     link: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
   },
-  contentHints: { contentProps: ['image', 'source', 'link'], contentBody: true },
+  contentHints: { contentProps: ['image', 'source', 'date', 'link'], contentBody: true },
   compile: (block) => {
     const img = prop(block, 'image');
     const link = prop(block, 'link');
     const source = prop(block, 'source');
+    const date = prop(block, 'date');
     const sourceHtml = source
       ? `<span class="${cls(block, '__source')}"${lineAttr(block, 'source')}>${escapeHtml(source)}</span>`
       : '';
+    const metaHtml = date
+      ? `<span class="${cls(block, '__meta')}"${lineAttr(block, 'date')}>${escapeHtml(date)}</span>`
+      : '';
     const linkHtml = link
-      ? `<a href="${safeUrl(link)}" class="${cls(block, '__link')}"${lineAttr(block, 'link')}>Read more</a>`
+      ? `<a href="${safeUrl(link)}" class="${cls(block, '__link')}"${lineAttr(block, 'link')}>Read more \u2192</a>`
       : '';
     const imgHtml = img
       ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}" style="display:block;"${lineAttr(block, 'image')}>`
       : '';
-    return `<article class="${cls(block)}">${imgHtml}${sourceHtml}${md(block)}${linkHtml}</article>`;
+    return `<article class="${cls(block)}">${imgHtml}<div class="${cls(block, '__body')}">${sourceHtml}${metaHtml}${md(block)}${linkHtml}</div></article>`;
   },
 };
 
@@ -394,10 +402,13 @@ function parseItem(html: string): ParsedBlock {
   if (img) props.image = img;
   const source = extractTextContent(html, 'mkly-newsletter-item__source');
   if (source) props.source = source;
+  const date = extractTextContent(html, 'mkly-newsletter-item__meta');
+  if (date) props.date = date;
   const link = extractAttrByClass(html, 'mkly-newsletter-item__link', 'href');
   if (link) props.link = link;
-  let inner = extractInnerHtml(html, 'mkly-newsletter-item') ?? '';
-  inner = stripElementsByClass(inner, 'mkly-newsletter-item__img', 'mkly-newsletter-item__source', 'mkly-newsletter-item__link');
+  const bodyInner = extractInnerHtml(html, 'mkly-newsletter-item__body');
+  let inner = bodyInner ?? extractInnerHtml(html, 'mkly-newsletter-item') ?? '';
+  inner = stripElementsByClass(inner, 'mkly-newsletter-item__img', 'mkly-newsletter-item__source', 'mkly-newsletter-item__meta', 'mkly-newsletter-item__link');
   return mkBlock('newsletter/item', props, htmlToMarkdown(inner));
 }
 
@@ -556,15 +567,16 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
     displayName: 'Item',
     icon: 'item',
     color: '#ec4899',
-    summary: 'Individual content item with thumbnail, source badge, and link.',
-    usage: '--- newsletter/item\nimage: https://picsum.photos/seed/mkly-item/240/160\nsource: GitHub Blog\nlink: https://example.com/post\n\nGitHub Copilot now supports inline refactoring suggestions.',
-    htmlPreview: '<article class="mkly-newsletter-item"><img src="https://picsum.photos/seed/mkly-item/240/160" alt="" class="mkly-newsletter-item__img" style="display:block;"><span class="mkly-newsletter-item__source">GitHub Blog</span><p>GitHub Copilot now supports inline refactoring suggestions.</p><a href="https://example.com/post" class="mkly-newsletter-item__link">Read more</a></article>',
+    summary: 'Individual content item with thumbnail, source badge, date, and link.',
+    usage: '--- newsletter/item\nimage: https://picsum.photos/seed/mkly-item/240/160\nsource: GitHub Blog\ndate: Feb 18, 2026\nlink: https://example.com/post\n\nGitHub Copilot now supports inline refactoring suggestions.',
+    htmlPreview: '<article class="mkly-newsletter-item"><img src="https://picsum.photos/seed/mkly-item/240/160" alt="" class="mkly-newsletter-item__img" style="display:block;"><div class="mkly-newsletter-item__body"><span class="mkly-newsletter-item__source">GitHub Blog</span><span class="mkly-newsletter-item__meta">Feb 18, 2026</span><p>GitHub Copilot now supports inline refactoring suggestions.</p><a href="https://example.com/post" class="mkly-newsletter-item__link">Read more \u2192</a></div></article>',
     properties: [
       { name: 'image', description: 'Thumbnail image URL', example: 'https://example.com/thumb.jpg' },
       { name: 'source', description: 'Source publication name', example: 'GitHub Blog' },
+      { name: 'date', description: 'Publication date or metadata text', example: 'Feb 18, 2026' },
       { name: 'link', description: 'Link to full article', example: 'https://example.com/post' },
     ],
-    tips: ['Image floats right at max 120px width', 'Typically nested inside a category block', 'Content is the editorial summary'],
+    tips: ['Image floats right at max 120px width', 'Body wrapper enables modern grid layouts in presets', 'Typically nested inside a category block', 'Content is the editorial summary'],
   },
   'newsletter/quickHits': {
     displayName: 'Quick Hits',
@@ -809,6 +821,10 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   border-radius: var(--mkly-radius, 8px);
   display: block;
 }
+.mkly-newsletter-item__body {
+  overflow: hidden;
+  min-width: 0;
+}
 .mkly-newsletter-item__source {
   display: inline-block;
   font-size: 0.7em;
@@ -819,6 +835,13 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   border-radius: 4px;
   margin-bottom: 6px;
   line-height: 1.3;
+}
+.mkly-newsletter-item__meta {
+  display: block;
+  font-size: 0.75em;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  opacity: 0.6;
 }
 .mkly-newsletter-item p {
   margin: 0 0 8px;
