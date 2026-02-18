@@ -147,13 +147,13 @@ See you next week!`;
       expect(result.html).toContain('backdrop-filter: blur(16px)');
     });
 
-    it('should list all 18 newsletter presets', () => {
-      expect(NEWSLETTER_KIT.presets).toHaveLength(18);
+    it('should list all 19 newsletter presets', () => {
+      expect(NEWSLETTER_KIT.presets).toHaveLength(19);
       const names = NEWSLETTER_KIT.presets!.map(p => p.name);
       expect(names).toEqual([
         'default', 'brutalist', 'neon', 'glass', 'elevated', 'editorial', 'retro',
         'minimal', 'magazine', 'compact', 'soft', 'typewriter',
-        'bold', 'airy', 'gazette', 'luxe', 'capsule', 'studio',
+        'bold', 'airy', 'gazette', 'luxe', 'capsule', 'studio', 'chronicle',
       ]);
     });
   });

@@ -156,7 +156,7 @@ const propRow: BlockDefinition = {
   name: 'propRow',
   contentMode: 'properties',
   styleHints: {
-    self: ['color', 'background', 'font-size', 'padding', 'border-color'],
+    self: ['color', 'background', 'font-size', 'padding'],
   },
   compile: (block, ctx) => {
     const name = prop(block, 'name');

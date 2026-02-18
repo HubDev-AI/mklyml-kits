@@ -35,10 +35,10 @@ const featured: BlockDefinition = {
   },
   styleHints: {
     self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow', 'overflow', 'opacity'],
-    img: ['text-align', 'width', 'max-width', 'height', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    img: ['width', 'max-width', 'height', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     source: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
     author: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding'],
-    link: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
+    link: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
   },
   contentHints: { contentProps: ['image', 'source', 'author', 'link'], contentBody: true },
   compile: (block) => {
@@ -47,7 +47,7 @@ const featured: BlockDefinition = {
     const source = prop(block, 'source');
     const author = prop(block, 'author');
     const imgHtml = img
-      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}" style="display:block;width:100%;"${lineAttr(block, 'image')}>`
+      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}"${lineAttr(block, 'image')}>`
       : '';
     const sourceHtml = source
       ? `<span class="${cls(block, '__source')}"${lineAttr(block, 'source')}>${escapeHtml(source)}</span>`
@@ -95,11 +95,11 @@ const item: BlockDefinition = {
   },
   styleHints: {
     self: ['display', 'grid-template-columns', 'gap', 'align-items', 'text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow', 'overflow'],
-    img: ['text-align', 'width', 'height', 'max-width', 'aspect-ratio', 'object-fit', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    body: ['overflow', 'min-width', 'padding'],
+    img: ['width', 'height', 'max-width', 'aspect-ratio', 'object-fit', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    body: ['overflow', 'padding'],
     source: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
-    meta: ['display', 'color', 'font-size', 'font-weight', 'margin', 'padding', 'opacity', 'letter-spacing'],
-    link: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
+    meta: ['color', 'font-size', 'font-weight', 'margin', 'padding', 'opacity'],
+    link: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
   },
   contentHints: { contentProps: ['image', 'source', 'date', 'link'], contentBody: true },
   compile: (block) => {
@@ -117,7 +117,7 @@ const item: BlockDefinition = {
       ? `<a href="${safeUrl(link)}" class="${cls(block, '__link')}"${lineAttr(block, 'link')}>Read more \u2192</a>`
       : '';
     const imgHtml = img
-      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}" style="display:block;"${lineAttr(block, 'image')}>`
+      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}"${lineAttr(block, 'image')}>`
       : '';
     return `<article class="${cls(block)}">${imgHtml}<div class="${cls(block, '__body')}">${sourceHtml}${metaHtml}${md(block)}${linkHtml}</div></article>`;
   },
@@ -226,7 +226,7 @@ const poll: BlockDefinition = {
   styleHints: {
     self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     question: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding'],
-    option: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
+    option: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
   },
   contentHints: { contentProps: ['question', 'option1', 'option2', 'option3', 'option4'], contentBody: true },
   compile: (block, ctx) => {
@@ -295,8 +295,8 @@ const sponsor: BlockDefinition = {
   styleHints: {
     self: ['text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     badge: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
-    img: ['text-align', 'width', 'height', 'max-width', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    link: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
+    img: ['width', 'height', 'max-width', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    link: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
   },
   contentHints: { contentProps: ['image', 'link', 'label'], contentBody: true },
   compile: (block) => {
@@ -304,7 +304,7 @@ const sponsor: BlockDefinition = {
     const link = prop(block, 'link');
     const label = prop(block, 'label');
     const imgHtml = img
-      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}" style="display:block;"${lineAttr(block, 'image')}>`
+      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}"${lineAttr(block, 'image')}>`
       : '';
     const linkHtml = link && label
       ? `<a href="${safeUrl(link)}" class="${cls(block, '__link')}"${lineAttr(block, 'link')}>${escapeHtml(label)}</a>`
@@ -321,7 +321,7 @@ const outro: BlockDefinition = {
   },
   styleHints: {
     self: ['text-align', 'color', 'font-family', 'font-size', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    cta: ['display', 'text-align', 'color', 'font-family', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow'],
+    cta: ['text-align', 'color', 'font-family', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow'],
   },
   contentHints: { contentBody: true },
   compile: (block) => {
@@ -542,7 +542,7 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
     color: '#eab308',
     summary: 'Highlighted article with image, source badge, author, and read-more link.',
     usage: '--- newsletter/featured\nimage: https://picsum.photos/seed/mkly-featured/600/300\nsource: TechCrunch\nauthor: Jane Smith\nlink: https://example.com/article\n\nA breakthrough in AI-powered code review tools is changing how teams ship software.',
-    htmlPreview: '<article class="mkly-newsletter-featured"><img src="https://picsum.photos/seed/mkly-featured/600/300" alt="" class="mkly-newsletter-featured__img" style="display:block;width:100%;border-radius:6px;"><span class="mkly-newsletter-featured__source">TechCrunch</span><span class="mkly-newsletter-featured__author"> by Jane Smith</span><p>A breakthrough in AI-powered code review tools is changing how teams ship software.</p><a href="https://example.com/article" class="mkly-newsletter-featured__link">Read more</a></article>',
+    htmlPreview: '<article class="mkly-newsletter-featured"><img src="https://picsum.photos/seed/mkly-featured/600/300" alt="" class="mkly-newsletter-featured__img" ><span class="mkly-newsletter-featured__source">TechCrunch</span><span class="mkly-newsletter-featured__author"> by Jane Smith</span><p>A breakthrough in AI-powered code review tools is changing how teams ship software.</p><a href="https://example.com/article" class="mkly-newsletter-featured__link">Read more</a></article>',
     properties: [
       { name: 'image', description: 'Featured image URL', example: 'https://example.com/feature.jpg' },
       { name: 'source', description: 'Publication or source name', example: 'TechCrunch' },
@@ -569,7 +569,7 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
     color: '#ec4899',
     summary: 'Individual content item with thumbnail, source badge, date, and link.',
     usage: '--- newsletter/item\nimage: https://picsum.photos/seed/mkly-item/240/160\nsource: GitHub Blog\ndate: Feb 18, 2026\nlink: https://example.com/post\n\nGitHub Copilot now supports inline refactoring suggestions.',
-    htmlPreview: '<article class="mkly-newsletter-item"><img src="https://picsum.photos/seed/mkly-item/240/160" alt="" class="mkly-newsletter-item__img" style="display:block;"><div class="mkly-newsletter-item__body"><span class="mkly-newsletter-item__source">GitHub Blog</span><span class="mkly-newsletter-item__meta">Feb 18, 2026</span><p>GitHub Copilot now supports inline refactoring suggestions.</p><a href="https://example.com/post" class="mkly-newsletter-item__link">Read more \u2192</a></div></article>',
+    htmlPreview: '<article class="mkly-newsletter-item"><img src="https://picsum.photos/seed/mkly-item/240/160" alt="" class="mkly-newsletter-item__img" ><div class="mkly-newsletter-item__body"><span class="mkly-newsletter-item__source">GitHub Blog</span><span class="mkly-newsletter-item__meta">Feb 18, 2026</span><p>GitHub Copilot now supports inline refactoring suggestions.</p><a href="https://example.com/post" class="mkly-newsletter-item__link">Read more \u2192</a></div></article>',
     properties: [
       { name: 'image', description: 'Thumbnail image URL', example: 'https://example.com/thumb.jpg' },
       { name: 'source', description: 'Source publication name', example: 'GitHub Blog' },
@@ -678,7 +678,7 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
     color: '#d97706',
     summary: 'Sponsored content block with badge, image, description, and link.',
     usage: '--- newsletter/sponsor\nimage: https://picsum.photos/seed/mkly-sponsor/400/200\nlink: https://sponsor.example.com\nlabel: Try it free\n\nBuild and deploy full-stack apps in minutes with **SuperCloud**.',
-    htmlPreview: '<aside class="mkly-newsletter-sponsor"><span class="mkly-newsletter-sponsor__badge">Sponsored</span><img src="https://picsum.photos/seed/mkly-sponsor/400/200" alt="" class="mkly-newsletter-sponsor__img" style="display:block;max-width:100%;border-radius:6px;"><p>Build and deploy full-stack apps in minutes with <strong>SuperCloud</strong>.</p><a href="https://sponsor.example.com" class="mkly-newsletter-sponsor__link">Try it free</a></aside>',
+    htmlPreview: '<aside class="mkly-newsletter-sponsor"><span class="mkly-newsletter-sponsor__badge">Sponsored</span><img src="https://picsum.photos/seed/mkly-sponsor/400/200" alt="" class="mkly-newsletter-sponsor__img" ><p>Build and deploy full-stack apps in minutes with <strong>SuperCloud</strong>.</p><a href="https://sponsor.example.com" class="mkly-newsletter-sponsor__link">Try it free</a></aside>',
     properties: [
       { name: 'image', description: 'Sponsor image/logo URL', example: 'https://example.com/sponsor.png' },
       { name: 'link', description: 'Sponsor link URL', example: 'https://sponsor.example.com' },
