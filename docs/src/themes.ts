@@ -11,8 +11,6 @@ const LIGHT_COLORS = `/* Docs/Light — warm orange accent on stone */
 .mkly-document h4, .mkly-document h5 { color: #1c1917; }
 .mkly-document h6 { color: #78716c; }
 .mkly-document h2 { border-bottom-color: #e7e5e4; }
-.mkly-document strong { color: #0c0a09; }
-.mkly-document em { color: #57534e; }
 .mkly-document blockquote:not([class]) { color: #78716c; border-left-color: #d6d3d1; }
 .mkly-document hr { background: #e7e5e4; }
 .mkly-document code:not(pre code) { background: #f5f5f4; color: #9a3412; border-color: #e7e5e4; }
@@ -135,8 +133,6 @@ const DARK_COLORS = `/* Docs/Dark — warm orange on stone */
 .mkly-document h4, .mkly-document h5 { color: #e7e5e4; }
 .mkly-document h6 { color: #a8a29e; }
 .mkly-document h2 { border-bottom-color: #44403c; }
-.mkly-document strong { color: #fafaf9; }
-.mkly-document em { color: #a8a29e; }
 .mkly-document blockquote:not([class]) { color: #a8a29e; border-left-color: #57534e; }
 .mkly-document hr { background: #44403c; }
 .mkly-document code:not(pre code) { background: #292524; color: #fdba74; border-color: #44403c; }

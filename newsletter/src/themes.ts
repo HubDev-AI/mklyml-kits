@@ -30,8 +30,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: var(--mkly-accent-hover); text-decoration-color: var(--mkly-accent-hover); }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: var(--mkly-text); letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: var(--mkly-text); }
-.mkly-document strong { color: var(--mkly-text); }
-.mkly-document em { color: var(--mkly-text); }
 .mkly-document blockquote { color: var(--mkly-muted); border-left: 0.1875rem solid #c7d2fe; padding: 0.875rem 1.25rem; background: #eef2ff; }
 .mkly-document hr { border: none; height: 0.0625rem; background: linear-gradient(90deg, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent); }
 .mkly-document code:not(pre code) { background: #eef2ff; color: var(--mkly-accent); padding: 0.125rem 0.4375rem; border-radius: 0.25rem; font-size: 0.87em; }
@@ -138,8 +136,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #9a3412; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #1a0f09; letter-spacing: -0.015em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #2c1810; }
-.mkly-document strong { color: #1a0f09; }
-.mkly-document em { color: #5c4a3e; }
 .mkly-document blockquote { color: #7a6b5d; border-left: 0.125rem solid #c2410c; padding: 1rem 1.5rem; background: #fdf6ee; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #d4c4b0; }
 .mkly-document code:not(pre code) { background: #f3ede4; color: #9a3412; padding: 0.125rem 0.375rem; border-radius: 0.1875rem; font-size: 0.86em; border: 0.0625rem solid #e8ddd0; }
@@ -246,8 +242,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #e2a33c; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #f5efe4; letter-spacing: -0.01em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #e8dcc8; }
-.mkly-document strong { color: #f5efe4; }
-.mkly-document em { color: #c4b49e; }
 .mkly-document blockquote { color: #9a8b78; border-left: 0.125rem solid #e2a33c; padding: 0.875rem 1.375rem; background: rgba(226,163,60,0.06); }
 .mkly-document hr { border: none; height: 0.0625rem; background: linear-gradient(90deg, transparent, #3a302a 20%, #3a302a 80%, transparent); }
 .mkly-document code:not(pre code) { background: rgba(226,163,60,0.1); color: #f0c060; padding: 0.125rem 0.4375rem; border-radius: 0.25rem; font-size: 0.87em; }
@@ -352,8 +346,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #00cc6a; text-shadow: 0 0 0.5rem rgba(0,255,135,0.4); }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #ffffff; letter-spacing: -0.03em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #e0e0e0; }
-.mkly-document strong { color: #ffffff; }
-.mkly-document em { color: #888888; }
 .mkly-document blockquote { color: #999999; border-left: 0.1875rem solid #00ff87; padding: 1rem 1.5rem; background: #0a0f0a; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #1a1a1a; }
 .mkly-document code:not(pre code) { background: #001a0d; color: #00ff87; padding: 0.1875rem 0.5rem; border-radius: 0.1875rem; font-size: 0.87em; border: 0.0625rem solid #003319; }
@@ -456,8 +448,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #1b4332; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #0d0d0a; letter-spacing: 0; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #1a1a16; }
-.mkly-document strong { color: #0d0d0a; }
-.mkly-document em { color: #5c5a50; }
 .mkly-document blockquote { color: #5c5a50; border-left: 0.125rem solid #2d6a4f; padding: 1.125rem 1.75rem; background: #eae4d8; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #c4bcaa; }
 .mkly-document code:not(pre code) { background: #e0dace; color: #1b4332; padding: 0.125rem 0.375rem; border-radius: 0.125rem; font-size: 0.86em; }
@@ -560,8 +550,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #cc0000; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #000000; text-transform: uppercase; letter-spacing: 0.06em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #000000; text-transform: uppercase; }
-.mkly-document strong { color: #000000; }
-.mkly-document em { color: #333333; }
 .mkly-document blockquote { color: #000000; border-left: 0.375rem solid #ff0000; padding: 0.75rem 1.25rem; background: transparent; }
 .mkly-document hr { border: none; height: 0.1875rem; background: #000000; }
 .mkly-document code:not(pre code) { background: #000000; color: #ededed; padding: 0.125rem 0.375rem; border-radius: 0; font-size: 0.87em; }
@@ -664,8 +652,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #00b8d4; text-shadow: 0 0 0.375rem rgba(0,229,255,0.3); }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #e4eef5; letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #c8dce8; }
-.mkly-document strong { color: #e4eef5; }
-.mkly-document em { color: #7a9ab0; }
 .mkly-document blockquote { color: #7a9ab0; border-left: 0.1875rem solid #00e5ff; padding: 0.875rem 1.375rem; background: #0e1e35; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #1a3050; }
 .mkly-document code:not(pre code) { background: #0e2438; color: #00e5ff; padding: 0.1875rem 0.4375rem; border-radius: 0.25rem; font-size: 0.87em; border: 0.0625rem solid #103050; }
@@ -768,8 +754,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #c020e0; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #f0eaf8; letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #e0d8f0; }
-.mkly-document strong { color: #f0eaf8; }
-.mkly-document em { color: #9080b0; }
 .mkly-document blockquote { color: #9080b0; border-left: 0.1875rem solid #e040fb; padding: 0.875rem 1.375rem; background: #18102a; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #251c3a; }
 .mkly-document code:not(pre code) { background: #1e1430; color: #e040fb; padding: 0.1875rem 0.4375rem; border-radius: 0.3125rem; font-size: 0.87em; }
@@ -872,8 +856,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #e03030; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #1a0c06; letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #2a1810; }
-.mkly-document strong { color: #1a0c06; }
-.mkly-document em { color: #6a5040; }
 .mkly-document blockquote { color: #6a5040; border-left: 0.1875rem solid #ff8c42; padding: 0.875rem 1.375rem; background: #fff0e0; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #f0d8c4; }
 .mkly-document code:not(pre code) { background: #fde8d0; color: #cc3333; padding: 0.125rem 0.375rem; border-radius: 0.4375rem; font-size: 0.87em; }
@@ -976,8 +958,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #0050cc; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #020a14; letter-spacing: -0.03em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #0a1628; }
-.mkly-document strong { color: #020a14; }
-.mkly-document em { color: #506070; }
 .mkly-document blockquote { color: #506070; border-left: 0.1875rem solid #0066ff; padding: 0.875rem 1.375rem; background: #f0f6fc; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #d4e4f0; }
 .mkly-document code:not(pre code) { background: #e8f0ff; color: #003399; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.87em; }
@@ -1080,8 +1060,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #a02858; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #1a0810; letter-spacing: -0.015em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #2a1020; }
-.mkly-document strong { color: #1a0810; }
-.mkly-document em { color: #704858; }
 .mkly-document blockquote { color: #704858; border-left: 0.1875rem solid #d4789a; padding: 0.875rem 1.375rem; background: #f8eaf0; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #ecd0dc; }
 .mkly-document code:not(pre code) { background: #f8eaf0; color: #a02858; padding: 0.125rem 0.375rem; border-radius: 0.3125rem; font-size: 0.86em; }
@@ -1184,8 +1162,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { text-decoration-color: #ffffff; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #ffffff; letter-spacing: -0.04em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #e0e0e0; }
-.mkly-document strong { color: #ffffff; }
-.mkly-document em { color: #808080; }
 .mkly-document blockquote { color: #808080; border-left: 0.125rem solid #444444; padding: 0.875rem 1.375rem; background: #111111; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #222222; }
 .mkly-document code:not(pre code) { background: #1a1a1a; color: #cccccc; padding: 0.125rem 0.4375rem; border-radius: 0.1875rem; font-size: 0.87em; border: 0.0625rem solid #2a2a2a; }
@@ -1288,8 +1264,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #99d600; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #ffffff; letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #e0e0e0; }
-.mkly-document strong { color: #ffffff; }
-.mkly-document em { color: #808080; }
 .mkly-document blockquote { color: #808080; border-left: 0.1875rem solid #b8ff00; padding: 0.875rem 1.375rem; background: #0a0f00; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #1a1a1a; }
 .mkly-document code:not(pre code) { background: #0d1400; color: #b8ff00; padding: 0.1875rem 0.5rem; border-radius: 0.1875rem; font-size: 0.87em; border: 0.0625rem solid #1a2800; }
@@ -1392,8 +1366,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #cc7a28; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #eae6de; letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #ccc8c0; }
-.mkly-document strong { color: #eae6de; }
-.mkly-document em { color: #808088; }
 .mkly-document blockquote { color: #808088; border-left: 0.1875rem solid #e8913a; padding: 0.875rem 1.375rem; background: #1e2028; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #2a2e38; }
 .mkly-document code:not(pre code) { background: #1e2228; color: #e8913a; padding: 0.1875rem 0.4375rem; border-radius: 0.25rem; font-size: 0.87em; border: 0.0625rem solid #2a3038; }
@@ -1496,8 +1468,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #b07808; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #140e06; letter-spacing: -0.01em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #241a0e; }
-.mkly-document strong { color: #140e06; }
-.mkly-document em { color: #685040; }
 .mkly-document blockquote { color: #685040; border-left: 0.1875rem solid #d4920a; padding: 1rem 1.5rem; background: #f5ecda; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #d4c8a8; }
 .mkly-document code:not(pre code) { background: #f0e8d4; color: #8a5d10; padding: 0.125rem 0.375rem; border-radius: 0.1875rem; font-size: 0.86em; border: 0.0625rem solid #e0d0b8; }
@@ -1600,8 +1570,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #6025cc; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #0e0820; letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #1a1030; }
-.mkly-document strong { color: #0e0820; }
-.mkly-document em { color: #5a4e70; }
 .mkly-document blockquote { color: #5a4e70; border-left: 0.1875rem solid #a78bfa; padding: 0.875rem 1.375rem; background: #f0eafc; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #ddd0f0; }
 .mkly-document code:not(pre code) { background: #ede5fc; color: #5b21b6; padding: 0.125rem 0.375rem; border-radius: 0.3125rem; font-size: 0.87em; }
@@ -1704,8 +1672,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #b83060; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #180c12; letter-spacing: -0.01em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #2a1820; }
-.mkly-document strong { color: #180c12; }
-.mkly-document em { color: #684858; }
 .mkly-document blockquote { color: #684858; border-left: 0.1875rem solid #e890a8; padding: 1rem 1.5rem; background: #fdf0f4; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #f0d8e0; }
 .mkly-document code:not(pre code) { background: #fdf0f4; color: #a0284e; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.86em; }
@@ -1808,8 +1774,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #e01060; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #eee8ff; letter-spacing: -0.02em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #d8d0f0; }
-.mkly-document strong { color: #eee8ff; }
-.mkly-document em { color: #8880b0; }
 .mkly-document blockquote { color: #8880b0; border-left: 0.1875rem solid #ff2d78; padding: 0.875rem 1.375rem; background: #0e0820; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #18143a; }
 .mkly-document code:not(pre code) { background: #140830; color: #ff6aa0; padding: 0.1875rem 0.4375rem; border-radius: 0.25rem; font-size: 0.87em; }
@@ -1912,8 +1876,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #1e7080; text-decoration-color: #1e7080; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #060c18; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #0e1828; }
-.mkly-document strong { color: #060c18; }
-.mkly-document em { color: #354050; }
 .mkly-document blockquote { color: #354050; border-left: 0.1875rem solid rgba(45,138,154,0.5); padding: 1rem 1.5rem; background: rgba(255,255,255,0.14); }
 .mkly-document hr { border: none; height: 0.0625rem; background: rgba(255,255,255,0.25); }
 .mkly-document code:not(pre code) { background: rgba(255,255,255,0.18); color: #1a4050; padding: 0.1875rem 0.5rem; border-radius: 0.375rem; font-size: 0.86em; }
@@ -2017,8 +1979,6 @@ export const NEWSLETTER_THEMES: MklyTheme[] = [
 .mkly-document a:not([class]):hover { color: #1b5e20; }
 .mkly-document h1, .mkly-document h2, .mkly-document h3 { color: #0c0e08; letter-spacing: -0.01em; }
 .mkly-document h4, .mkly-document h5, .mkly-document h6 { color: #1a1c14; }
-.mkly-document strong { color: #0c0e08; }
-.mkly-document em { color: #505840; }
 .mkly-document blockquote { color: #505840; border-left: 0.1875rem solid #4caf50; padding: 1rem 1.5rem; background: #e6e2d6; }
 .mkly-document hr { border: none; height: 0.0625rem; background: #c0bca8; }
 .mkly-document code:not(pre code) { background: #dce8d0; color: #1b5e20; padding: 0.125rem 0.375rem; border-radius: 0.1875rem; font-size: 0.86em; border: 0.0625rem solid #c0d4b0; }
