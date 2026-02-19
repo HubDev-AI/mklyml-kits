@@ -27,8 +27,8 @@ const LIGHT_COLORS = `/* Docs/Light — warm orange accent on stone */
 .mkly-core-heading--2 { border-bottom-color: #e7e5e4; }
 .mkly-core-text { color: #292524; }
 .mkly-core-divider { background: #e7e5e4; }
-.mkly-core-image__img { box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-.mkly-core-button .mkly-core-button__link { background: #ea580c; color: #ffffff; box-shadow: 0 1px 2px rgba(234,88,12,0.2); }
+.mkly-core-image__img { box-shadow: 0 0.0625rem 0.25rem rgba(0,0,0,0.06); }
+.mkly-core-button .mkly-core-button__link { background: #ea580c; color: #ffffff; box-shadow: 0 0.0625rem 0.125rem rgba(234,88,12,0.2); }
 .mkly-core-button .mkly-core-button__link:hover { background: #c2410c; }
 .mkly-core-code { background: #f5f5f4; border-color: #e7e5e4; }
 .mkly-core-code pre { background: transparent; border: none; color: #292524; }
@@ -36,7 +36,7 @@ const LIGHT_COLORS = `/* Docs/Light — warm orange accent on stone */
 .mkly-core-quote__author { color: #78716c; }
 .mkly-core-section { border-top-color: #e7e5e4; }
 .mkly-core-section__title { color: #0c0a09; border-bottom-color: #ea580c; }
-.mkly-core-card { background: #ffffff; border-color: #e7e5e4; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.mkly-core-card { background: #ffffff; border-color: #e7e5e4; box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.04); }
 .mkly-core-card__body h2 { color: #0c0a09; }
 .mkly-core-card__link { color: #ea580c; }
 .mkly-core-card__link:hover { color: #c2410c; }
@@ -87,7 +87,7 @@ const LIGHT_COLORS = `/* Docs/Light — warm orange accent on stone */
 
 /* linkCard */
 .mkly-docs-linkCard { border-color: #e7e5e4; }
-.mkly-docs-linkCard:hover { border-color: #ea580c; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.mkly-docs-linkCard:hover { border-color: #ea580c; box-shadow: 0 0.125rem 0.75rem rgba(0,0,0,0.06); }
 
 /* badge */
 .mkly-docs-badge--default { background: #f5f5f4; color: #57534e; border-color: #e7e5e4; }
@@ -100,7 +100,7 @@ const LIGHT_COLORS = `/* Docs/Light — warm orange accent on stone */
 .mkly-docs-fileTree pre { color: #292524; }
 
 /* install */
-.mkly-docs-install { box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.mkly-docs-install { box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.08); }
 .mkly-docs-install__pre { background: #292524; color: #e7e5e4; }
 .mkly-docs-install__cmd { color: #4ade80; }
 
@@ -151,8 +151,8 @@ const DARK_COLORS = `/* Docs/Dark — warm orange on stone */
 .mkly-core-heading--2 { border-bottom-color: #44403c; }
 .mkly-core-text { color: #d6d3d1; }
 .mkly-core-divider { background: #44403c; }
-.mkly-core-image__img { box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
-.mkly-core-button .mkly-core-button__link { background: #fb923c; color: #1c1917; box-shadow: 0 1px 2px rgba(251,146,60,0.2); }
+.mkly-core-image__img { box-shadow: 0 0.0625rem 0.25rem rgba(0,0,0,0.3); }
+.mkly-core-button .mkly-core-button__link { background: #fb923c; color: #1c1917; box-shadow: 0 0.0625rem 0.125rem rgba(251,146,60,0.2); }
 .mkly-core-button .mkly-core-button__link:hover { background: #fdba74; }
 .mkly-core-code { background: #292524; border-color: #44403c; }
 .mkly-core-code pre { background: transparent; border: none; color: #d6d3d1; }
@@ -160,7 +160,7 @@ const DARK_COLORS = `/* Docs/Dark — warm orange on stone */
 .mkly-core-quote__author { color: #a8a29e; }
 .mkly-core-section { border-top-color: #44403c; }
 .mkly-core-section__title { color: #fafaf9; border-bottom-color: #fb923c; }
-.mkly-core-card { background: #292524; border-color: #44403c; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.mkly-core-card { background: #292524; border-color: #44403c; box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.2); }
 .mkly-core-card__body h2 { color: #fafaf9; }
 .mkly-core-card__link { color: #fb923c; }
 .mkly-core-card__link:hover { color: #fdba74; }
@@ -211,7 +211,7 @@ const DARK_COLORS = `/* Docs/Dark — warm orange on stone */
 
 /* linkCard */
 .mkly-docs-linkCard { border-color: #44403c; }
-.mkly-docs-linkCard:hover { border-color: #fb923c; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.mkly-docs-linkCard:hover { border-color: #fb923c; box-shadow: 0 0.125rem 0.75rem rgba(0,0,0,0.3); }
 
 /* badge */
 .mkly-docs-badge--default { background: #292524; color: #a8a29e; border-color: #44403c; }
@@ -224,7 +224,7 @@ const DARK_COLORS = `/* Docs/Dark — warm orange on stone */
 .mkly-docs-fileTree pre { color: #d6d3d1; }
 
 /* install */
-.mkly-docs-install { box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+.mkly-docs-install { box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.3); }
 .mkly-docs-install__pre { background: #0c0a09; color: #d6d3d1; }
 .mkly-docs-install__cmd { color: #4ade80; }
 
@@ -263,11 +263,11 @@ export const DOCS_THEMES: MklyTheme[] = [
       bgSubtle: '#f5f5f4',
       buttonText: '#ffffff',
       codeBg: '#f5f5f4',
-      radius: '8px',
+      radius: '0.5rem',
       fontBody: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       fontHeading: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       fontMono: "'SF Mono', 'Fira Code', 'JetBrains Mono', monospace",
-      spacing: '24px',
+      spacing: '1.5rem',
     },
     rawCss: `${LIGHT_COLORS}
 
@@ -300,11 +300,11 @@ export const DOCS_THEMES: MklyTheme[] = [
       bgSubtle: '#f5f5f4',
       buttonText: '#ffffff',
       codeBg: '#f5f5f4',
-      radius: '8px',
+      radius: '0.5rem',
       fontBody: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       fontHeading: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       fontMono: "'SF Mono', 'Fira Code', 'JetBrains Mono', monospace",
-      spacing: '24px',
+      spacing: '1.5rem',
     },
     rawCss: LIGHT_COLORS,
   },
@@ -322,11 +322,11 @@ export const DOCS_THEMES: MklyTheme[] = [
       bgSubtle: '#292524',
       buttonText: '#1c1917',
       codeBg: '#292524',
-      radius: '8px',
+      radius: '0.5rem',
       fontBody: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       fontHeading: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       fontMono: "'SF Mono', 'Fira Code', 'JetBrains Mono', monospace",
-      spacing: '24px',
+      spacing: '1.5rem',
     },
     rawCss: DARK_COLORS,
   },

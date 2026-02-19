@@ -311,7 +311,7 @@ const liveExample: BlockDefinition = {
   compile: (block) => {
     const title = prop(block, 'title');
     const height = prop(block, 'height') ?? '400';
-    const safeHeight = /^\d+(\.\d+)?(px)?$/i.test(height) ? cssVal(height) : '400px';
+    const safeHeight = /^\d+(\.\d+)?(px|rem)?$/i.test(height) ? cssVal(height) : '25rem';
     const encoded = toBase64(block.content);
     const titleHtml = title ? `<span class="${cls(block, '__title')}">${escapeHtml(title)}</span>` : '';
     return `<div class="${cls(block)}"><div class="${cls(block, '__header')}">${titleHtml}<div class="${cls(block, '__toggle')}"><button class="${cls(block, '__tab')} ${cls(block, '__tab--active')}" data-panel="source">Source</button><button class="${cls(block, '__tab')}" data-panel="preview">Preview</button></div></div><div class="${cls(block, '__panel')} ${cls(block, '__source')}"><pre class="${cls(block, '__pre')}"><code>${escapeHtml(block.content)}</code></pre></div><div class="${cls(block, '__panel')} ${cls(block, '__preview')}" data-mkly-preview="${encoded}" data-preview-height="${escapeHtml(safeHeight)}" style="display:none"><iframe class="${cls(block, '__frame')}" sandbox="allow-same-origin" style="height:${escapeHtml(safeHeight)};width:100%;border:none"></iframe></div></div>`;

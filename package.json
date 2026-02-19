@@ -14,6 +14,12 @@
       "import": "./dist/docs.js"
     }
   },
+  "typesVersions": {
+    "*": {
+      "newsletter": ["dist/newsletter.d.ts"],
+      "docs": ["dist/docs.d.ts"]
+    }
+  },
   "files": ["dist"],
   "scripts": {
     "build": "tsup",

@@ -26,6 +26,6 @@ link: https://example.com
 Some content here.
     `, { kits: { newsletter: NEWSLETTER_KIT } });
     expect(result.html).toContain('mkly-newsletter-featured');
-    expect(result.html).toContain('border: 2px solid var(--mkly-accent);');
+    expect(result.html).toContain('border: 0.125rem solid var(--mkly-accent);');
   });
 });
