@@ -112,11 +112,44 @@ See you next week!`;
     expect(result.html).toContain('Nested item');
   });
 
+  it('keeps user global text override in user layer over newsletter/default theme', () => {
+    const source = `--- use: core
+--- use: newsletter
+--- theme: newsletter/default
+
+--- meta
+version: 1
+
+--- style
+text: #ff1122
+fontSize: 1.125rem
+lineHeight: 1.8
+
+--- newsletter/intro
+Intro copy
+
+--- newsletter/recommendations
+title: Reads
+- [One](https://example.com/1)`;
+
+    const result = mkly(source, { kits: { core: CORE_KIT, newsletter: NEWSLETTER_KIT } });
+    const styleTag = result.html.match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? '';
+    expect(styleTag).toContain('@layer theme');
+    expect(styleTag).toContain('@layer user');
+    expect(styleTag.indexOf('@layer user')).toBeGreaterThan(styleTag.indexOf('@layer theme'));
+    expect(styleTag).toContain('--mkly-text: #ff1122;');
+    expect(styleTag).toContain('--mkly-font-size: 1.125rem;');
+    expect(styleTag).toContain('--mkly-line-height: 1.8;');
+    expect(styleTag).toContain('.mkly-newsletter-intro');
+    expect(styleTag).toContain('color: var(--mkly-text);');
+    expect(styleTag).toContain('line-height: var(--mkly-line-height);');
+  });
+
   describe('presets', () => {
     it('should apply glass preset to newsletter blocks', () => {
       const source = `--- use: core\n--- use: newsletter\n--- preset: glass\n\n--- meta\nversion: 1\n\n--- newsletter/tip\ntitle: Pro Tip\n\nSome useful tip`;
       const result = mkly(source, { kits: { core: CORE_KIT, newsletter: NEWSLETTER_KIT } });
-      expect(result.html).toContain('backdrop-filter: blur(16px)');
+      expect(result.html).toContain('backdrop-filter: blur(1rem)');
       expect(result.html).toContain('<meta name="mkly:preset" content="glass">');
     });
 
@@ -144,7 +177,7 @@ See you next week!`;
       // Dark theme colors (core/dark)
       expect(result.html).toContain('--mkly-bg: #000000');
       // Glass structural styles
-      expect(result.html).toContain('backdrop-filter: blur(16px)');
+      expect(result.html).toContain('backdrop-filter: blur(1rem)');
     });
 
     it('should list all 19 newsletter presets', () => {
