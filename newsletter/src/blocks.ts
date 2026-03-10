@@ -18,7 +18,7 @@ const intro: BlockDefinition = {
   name: 'intro',
   contentMode: 'text',
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
   },
   contentHints: { contentBody: true },
   compile: (block) => `<div class="${cls(block)}">${md(block)}</div>`,
@@ -34,11 +34,11 @@ const featured: BlockDefinition = {
     link: { label: 'Link' },
   },
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow', 'overflow', 'opacity'],
-    img: ['text-align', 'width', 'max-width', 'height', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow', 'overflow', 'opacity'],
+    img: ['width', 'max-width', 'height', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     source: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
     author: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding'],
-    link: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
+    link: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
   },
   contentHints: { contentProps: ['image', 'source', 'author', 'link'], contentBody: true },
   compile: (block) => {
@@ -47,7 +47,7 @@ const featured: BlockDefinition = {
     const source = prop(block, 'source');
     const author = prop(block, 'author');
     const imgHtml = img
-      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}" style="display:block;width:100%;"${lineAttr(block, 'image')}>`
+      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}"${lineAttr(block, 'image')}>`
       : '';
     const sourceHtml = source
       ? `<span class="${cls(block, '__source')}"${lineAttr(block, 'source')}>${escapeHtml(source)}</span>`
@@ -70,8 +70,8 @@ const category: BlockDefinition = {
     title: { label: 'Title' },
   },
   styleHints: {
-    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    title: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding', 'line-height', 'border-color'],
+    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'gap', 'opacity', 'box-shadow'],
+    title: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding', 'line-height', 'border-width', 'border-style', 'border-color'],
   },
   contentHints: { contentChildren: true },
   compile: (block) => {
@@ -88,30 +88,38 @@ const item: BlockDefinition = {
   contentMode: 'mixed',
   targets: {
     img: { label: 'Image' },
+    body: { label: 'Body' },
     source: { label: 'Source badge' },
+    meta: { label: 'Meta' },
     link: { label: 'Link' },
   },
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    img: ['text-align', 'width', 'height', 'max-width', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    self: ['display', 'grid-template-columns', 'gap', 'align-items', 'text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow', 'overflow'],
+    img: ['width', 'height', 'max-width', 'aspect-ratio', 'object-fit', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    body: ['overflow', 'padding'],
     source: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
-    link: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
+    meta: ['color', 'font-size', 'font-weight', 'margin', 'padding', 'opacity'],
+    link: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
   },
-  contentHints: { contentProps: ['image', 'source', 'link'], contentBody: true },
+  contentHints: { contentProps: ['image', 'source', 'date', 'link'], contentBody: true },
   compile: (block) => {
     const img = prop(block, 'image');
     const link = prop(block, 'link');
     const source = prop(block, 'source');
+    const date = prop(block, 'date');
     const sourceHtml = source
       ? `<span class="${cls(block, '__source')}"${lineAttr(block, 'source')}>${escapeHtml(source)}</span>`
       : '';
+    const metaHtml = date
+      ? `<span class="${cls(block, '__meta')}"${lineAttr(block, 'date')}>${escapeHtml(date)}</span>`
+      : '';
     const linkHtml = link
-      ? `<a href="${safeUrl(link)}" class="${cls(block, '__link')}"${lineAttr(block, 'link')}>Read more</a>`
+      ? `<a href="${safeUrl(link)}" class="${cls(block, '__link')}"${lineAttr(block, 'link')}>Read more \u2192</a>`
       : '';
     const imgHtml = img
-      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}" style="display:block;"${lineAttr(block, 'image')}>`
+      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}"${lineAttr(block, 'image')}>`
       : '';
-    return `<article class="${cls(block)}">${imgHtml}${sourceHtml}${md(block)}${linkHtml}</article>`;
+    return `<article class="${cls(block)}">${imgHtml}<div class="${cls(block, '__body')}">${sourceHtml}${metaHtml}${md(block)}${linkHtml}</div></article>`;
   },
 };
 
@@ -143,7 +151,7 @@ const tools: BlockDefinition = {
     title: { label: 'Title' },
   },
   styleHints: {
-    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'gap', 'opacity', 'box-shadow'],
     title: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding'],
   },
   contentHints: { contentChildren: true },
@@ -202,7 +210,7 @@ const personalNote: BlockDefinition = {
   name: 'personalNote',
   contentMode: 'text',
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
   },
   contentHints: { contentBody: true },
   compile: (block) => `<div class="${cls(block)}">${md(block)}</div>`,
@@ -218,7 +226,7 @@ const poll: BlockDefinition = {
   styleHints: {
     self: ['text-align', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     question: ['color', 'font-family', 'font-size', 'font-weight', 'margin', 'padding'],
-    option: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
+    option: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
   },
   contentHints: { contentProps: ['question', 'option1', 'option2', 'option3', 'option4'], contentBody: true },
   compile: (block, ctx) => {
@@ -287,8 +295,8 @@ const sponsor: BlockDefinition = {
   styleHints: {
     self: ['text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
     badge: ['color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color'],
-    img: ['text-align', 'width', 'height', 'max-width', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
-    link: ['display', 'text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
+    img: ['width', 'height', 'max-width', 'margin', 'padding', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    link: ['text-align', 'color', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius'],
   },
   contentHints: { contentProps: ['image', 'link', 'label'], contentBody: true },
   compile: (block) => {
@@ -296,7 +304,7 @@ const sponsor: BlockDefinition = {
     const link = prop(block, 'link');
     const label = prop(block, 'label');
     const imgHtml = img
-      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}" style="display:block;"${lineAttr(block, 'image')}>`
+      ? `<img src="${safeUrl(img)}" alt="" class="${cls(block, '__img')}"${lineAttr(block, 'image')}>`
       : '';
     const linkHtml = link && label
       ? `<a href="${safeUrl(link)}" class="${cls(block, '__link')}"${lineAttr(block, 'link')}>${escapeHtml(label)}</a>`
@@ -312,8 +320,8 @@ const outro: BlockDefinition = {
     cta: { label: 'CTA button' },
   },
   styleHints: {
-    self: ['text-align', 'color', 'font-family', 'font-size', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity'],
-    cta: ['display', 'text-align', 'color', 'font-family', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow'],
+    self: ['text-align', 'color', 'font-family', 'font-size', 'font-style', 'line-height', 'padding', 'margin', 'background', 'border-radius', 'border-width', 'border-style', 'border-color', 'opacity', 'box-shadow'],
+    cta: ['text-align', 'color', 'font-family', 'background', 'font-size', 'font-weight', 'padding', 'margin', 'border-radius', 'border-width', 'border-style', 'border-color', 'box-shadow'],
   },
   contentHints: { contentBody: true },
   compile: (block) => {
@@ -394,10 +402,13 @@ function parseItem(html: string): ParsedBlock {
   if (img) props.image = img;
   const source = extractTextContent(html, 'mkly-newsletter-item__source');
   if (source) props.source = source;
+  const date = extractTextContent(html, 'mkly-newsletter-item__meta');
+  if (date) props.date = date;
   const link = extractAttrByClass(html, 'mkly-newsletter-item__link', 'href');
   if (link) props.link = link;
-  let inner = extractInnerHtml(html, 'mkly-newsletter-item') ?? '';
-  inner = stripElementsByClass(inner, 'mkly-newsletter-item__img', 'mkly-newsletter-item__source', 'mkly-newsletter-item__link');
+  const bodyInner = extractInnerHtml(html, 'mkly-newsletter-item__body');
+  let inner = bodyInner ?? extractInnerHtml(html, 'mkly-newsletter-item') ?? '';
+  inner = stripElementsByClass(inner, 'mkly-newsletter-item__img', 'mkly-newsletter-item__source', 'mkly-newsletter-item__meta', 'mkly-newsletter-item__link');
   return mkBlock('newsletter/item', props, htmlToMarkdown(inner));
 }
 
@@ -531,7 +542,7 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
     color: '#eab308',
     summary: 'Highlighted article with image, source badge, author, and read-more link.',
     usage: '--- newsletter/featured\nimage: https://picsum.photos/seed/mkly-featured/600/300\nsource: TechCrunch\nauthor: Jane Smith\nlink: https://example.com/article\n\nA breakthrough in AI-powered code review tools is changing how teams ship software.',
-    htmlPreview: '<article class="mkly-newsletter-featured"><img src="https://picsum.photos/seed/mkly-featured/600/300" alt="" class="mkly-newsletter-featured__img" style="display:block;width:100%;border-radius:6px;"><span class="mkly-newsletter-featured__source">TechCrunch</span><span class="mkly-newsletter-featured__author"> by Jane Smith</span><p>A breakthrough in AI-powered code review tools is changing how teams ship software.</p><a href="https://example.com/article" class="mkly-newsletter-featured__link">Read more</a></article>',
+    htmlPreview: '<article class="mkly-newsletter-featured"><img src="https://picsum.photos/seed/mkly-featured/600/300" alt="" class="mkly-newsletter-featured__img" ><span class="mkly-newsletter-featured__source">TechCrunch</span><span class="mkly-newsletter-featured__author"> by Jane Smith</span><p>A breakthrough in AI-powered code review tools is changing how teams ship software.</p><a href="https://example.com/article" class="mkly-newsletter-featured__link">Read more</a></article>',
     properties: [
       { name: 'image', description: 'Featured image URL', example: 'https://example.com/feature.jpg' },
       { name: 'source', description: 'Publication or source name', example: 'TechCrunch' },
@@ -556,15 +567,16 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
     displayName: 'Item',
     icon: 'item',
     color: '#ec4899',
-    summary: 'Individual content item with thumbnail, source badge, and link.',
-    usage: '--- newsletter/item\nimage: https://picsum.photos/seed/mkly-item/240/160\nsource: GitHub Blog\nlink: https://example.com/post\n\nGitHub Copilot now supports inline refactoring suggestions.',
-    htmlPreview: '<article class="mkly-newsletter-item"><img src="https://picsum.photos/seed/mkly-item/240/160" alt="" class="mkly-newsletter-item__img" style="display:block;"><span class="mkly-newsletter-item__source">GitHub Blog</span><p>GitHub Copilot now supports inline refactoring suggestions.</p><a href="https://example.com/post" class="mkly-newsletter-item__link">Read more</a></article>',
+    summary: 'Individual content item with thumbnail, source badge, date, and link.',
+    usage: '--- newsletter/item\nimage: https://picsum.photos/seed/mkly-item/240/160\nsource: GitHub Blog\ndate: Feb 18, 2026\nlink: https://example.com/post\n\nGitHub Copilot now supports inline refactoring suggestions.',
+    htmlPreview: '<article class="mkly-newsletter-item"><img src="https://picsum.photos/seed/mkly-item/240/160" alt="" class="mkly-newsletter-item__img" ><div class="mkly-newsletter-item__body"><span class="mkly-newsletter-item__source">GitHub Blog</span><span class="mkly-newsletter-item__meta">Feb 18, 2026</span><p>GitHub Copilot now supports inline refactoring suggestions.</p><a href="https://example.com/post" class="mkly-newsletter-item__link">Read more \u2192</a></div></article>',
     properties: [
       { name: 'image', description: 'Thumbnail image URL', example: 'https://example.com/thumb.jpg' },
       { name: 'source', description: 'Source publication name', example: 'GitHub Blog' },
+      { name: 'date', description: 'Publication date or metadata text', example: 'Feb 18, 2026' },
       { name: 'link', description: 'Link to full article', example: 'https://example.com/post' },
     ],
-    tips: ['Image floats right at max 120px width', 'Typically nested inside a category block', 'Content is the editorial summary'],
+    tips: ['Image floats right at max 7.5rem width', 'Body wrapper enables modern grid layouts in presets', 'Typically nested inside a category block', 'Content is the editorial summary'],
   },
   'newsletter/quickHits': {
     displayName: 'Quick Hits',
@@ -666,7 +678,7 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
     color: '#d97706',
     summary: 'Sponsored content block with badge, image, description, and link.',
     usage: '--- newsletter/sponsor\nimage: https://picsum.photos/seed/mkly-sponsor/400/200\nlink: https://sponsor.example.com\nlabel: Try it free\n\nBuild and deploy full-stack apps in minutes with **SuperCloud**.',
-    htmlPreview: '<aside class="mkly-newsletter-sponsor"><span class="mkly-newsletter-sponsor__badge">Sponsored</span><img src="https://picsum.photos/seed/mkly-sponsor/400/200" alt="" class="mkly-newsletter-sponsor__img" style="display:block;max-width:100%;border-radius:6px;"><p>Build and deploy full-stack apps in minutes with <strong>SuperCloud</strong>.</p><a href="https://sponsor.example.com" class="mkly-newsletter-sponsor__link">Try it free</a></aside>',
+    htmlPreview: '<aside class="mkly-newsletter-sponsor"><span class="mkly-newsletter-sponsor__badge">Sponsored</span><img src="https://picsum.photos/seed/mkly-sponsor/400/200" alt="" class="mkly-newsletter-sponsor__img" ><p>Build and deploy full-stack apps in minutes with <strong>SuperCloud</strong>.</p><a href="https://sponsor.example.com" class="mkly-newsletter-sponsor__link">Try it free</a></aside>',
     properties: [
       { name: 'image', description: 'Sponsor image/logo URL', example: 'https://example.com/sponsor.png' },
       { name: 'link', description: 'Sponsor link URL', example: 'https://sponsor.example.com' },
@@ -702,22 +714,23 @@ const NEWSLETTER_DOCS: Record<string, BlockDocs> = {
 };
 
 const NEWSLETTER_KEYFRAMES: Record<string, string> = {
-  revealCard: 'from{opacity:0;transform:translateY(12px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}',
-  highlightPulse: '0%{box-shadow:0 0 0 0 var(--mkly-accent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}',
+  revealCard: 'from{opacity:0;transform:translateY(0.75rem) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}',
+  highlightPulse: '0%{box-shadow:0 0 0 0 var(--mkly-accent)}70%{box-shadow:0 0 0 0.5rem transparent}100%{box-shadow:0 0 0 0 transparent}',
 };
 
 const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 .mkly-document {
-  padding: 0 24px;
+  padding: 0 1.5rem;
   --_gs: var(--mkly-gap-scale, 1);
+  --_lhs: var(--mkly-line-height-scale, 1);
 }
 
 /* ── intro ── */
 .mkly-newsletter-intro {
   font-size: 1.06em;
-  line-height: 1.75;
-  margin: 0 0 calc(24px * var(--_gs));
+  line-height: calc(1.75 * var(--_lhs, 1));
+  margin: 0 0 calc(1.5rem * var(--_gs));
 }
 .mkly-newsletter-intro p { margin: 0 0 0.8em; }
 .mkly-newsletter-intro p:last-child { margin-bottom: 0; }
@@ -725,11 +738,11 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── featured ── */
 .mkly-newsletter-featured {
-  margin: 0 0 calc(24px * var(--_gs));
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
-  border-radius: var(--mkly-radius, 8px);
+  border-radius: var(--mkly-radius, 0.5rem);
   overflow: hidden;
 }
 .mkly-newsletter-featured__img {
@@ -742,25 +755,25 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 4px 10px;
-  border-radius: 4px;
-  margin: 18px 20px 6px;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin: 0.875rem 1.25rem 0.25rem;
   line-height: 1.3;
 }
 .mkly-newsletter-featured__author {
   font-size: 0.85em;
-  margin: 0 20px 6px;
+  margin: 0 1.25rem 0.375rem;
   line-height: 1.4;
   font-weight: 500;
 }
 .mkly-newsletter-featured p {
-  margin: 6px 20px 12px;
-  line-height: 1.65;
+  margin: 0.25rem 1.25rem 0.5rem;
+  line-height: calc(1.65 * var(--_lhs, 1));
   font-size: 0.95em;
 }
 .mkly-newsletter-featured__link {
   display: inline-block;
-  margin: 4px 20px 20px;
+  margin: 0.25rem 1.25rem 0.875rem;
   font-weight: 600;
   font-size: 0.88em;
   text-decoration: none;
@@ -769,18 +782,18 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── category ── */
 .mkly-newsletter-category {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding-top: calc(24px * var(--_gs));
-  border-top-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding-top: calc(1.5rem * var(--_gs));
+  border-top-width: 0.0625rem;
   border-top-style: solid;
   border-top-color: transparent;
 }
 .mkly-newsletter-category__title {
   font-size: 1.25em;
   font-weight: 700;
-  margin: 0 0 16px;
-  padding-bottom: 10px;
-  border-bottom-width: 2px;
+  margin: 0 0 1rem;
+  padding-bottom: 0.625rem;
+  border-bottom-width: 0.125rem;
   border-bottom-style: solid;
   border-bottom-color: transparent;
   letter-spacing: -0.015em;
@@ -789,8 +802,8 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── item ── */
 .mkly-newsletter-item {
-  padding: 16px 0;
-  border-bottom-width: 1px;
+  padding: 0.75rem 0;
+  border-bottom-width: 0.0625rem;
   border-bottom-style: solid;
   border-bottom-color: transparent;
   position: relative;
@@ -802,12 +815,16 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   clear: both;
 }
 .mkly-newsletter-item__img {
-  max-width: 120px;
+  max-width: 7.5rem;
   float: right;
-  margin-left: 16px;
-  margin-bottom: 8px;
-  border-radius: var(--mkly-radius, 8px);
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--mkly-radius, 0.5rem);
   display: block;
+}
+.mkly-newsletter-item__body {
+  overflow: hidden;
+  min-width: 0;
 }
 .mkly-newsletter-item__source {
   display: inline-block;
@@ -815,26 +832,33 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 3px 8px;
-  border-radius: 4px;
-  margin-bottom: 6px;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.375rem;
   line-height: 1.3;
 }
+.mkly-newsletter-item__meta {
+  display: block;
+  font-size: 0.75em;
+  line-height: 1.4;
+  margin-bottom: 0.375rem;
+  opacity: 0.6;
+}
 .mkly-newsletter-item p {
-  margin: 0 0 8px;
-  line-height: 1.65;
+  margin: 0 0 0.5rem;
+  line-height: calc(1.65 * var(--_lhs, 1));
   font-size: 0.95em;
 }
 .mkly-newsletter-item h2, .mkly-newsletter-item h3 {
   font-size: 1.06em;
   font-weight: 600;
-  margin: 0 0 6px;
+  margin: 0 0 0.375rem;
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
 .mkly-newsletter-item__link {
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 0.375rem;
   font-size: 0.85em;
   font-weight: 600;
   text-decoration: none;
@@ -843,17 +867,17 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── quickHits ── */
 .mkly-newsletter-quickHits {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 20px 24px;
-  border-radius: var(--mkly-radius, 8px);
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--mkly-radius, 0.5rem);
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
 }
 .mkly-newsletter-quickHits__title {
   font-size: 1.1em;
   font-weight: 700;
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
@@ -862,8 +886,8 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   padding-left: 1.4em;
 }
 .mkly-newsletter-quickHits li {
-  margin-bottom: 8px;
-  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  line-height: calc(1.6 * var(--_lhs, 1));
   font-size: 0.95em;
 }
 .mkly-newsletter-quickHits li:last-child { margin-bottom: 0; }
@@ -871,70 +895,70 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── tools ── */
 .mkly-newsletter-tools {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 20px 24px;
-  border-radius: var(--mkly-radius, 8px);
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--mkly-radius, 0.5rem);
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
 }
 .mkly-newsletter-tools__title {
   font-size: 1.1em;
   font-weight: 700;
-  margin: 0 0 14px;
+  margin: 0 0 0.875rem;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
 
 /* ── tipOfTheDay ── */
 .mkly-newsletter-tipOfTheDay {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 20px 24px;
-  border-left-width: 4px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 0.875rem 1.25rem;
+  border-left-width: 0.25rem;
   border-left-style: solid;
   border-left-color: transparent;
-  line-height: 1.65;
+  line-height: calc(1.65 * var(--_lhs, 1));
 }
 .mkly-newsletter-tipOfTheDay__title {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   font-weight: 700;
   font-size: 1em;
   letter-spacing: 0.01em;
 }
 .mkly-newsletter-tipOfTheDay p {
-  margin: 0 0 8px;
+  margin: 0 0 0.5rem;
   font-size: 0.95em;
 }
 .mkly-newsletter-tipOfTheDay p:last-child { margin-bottom: 0; }
 
 /* ── community ── */
 .mkly-newsletter-community {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 24px 28px;
-  border-radius: var(--mkly-radius, 8px);
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 1rem 1.5rem;
+  border-radius: var(--mkly-radius, 0.5rem);
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
 }
 .mkly-newsletter-community__quote {
   font-style: italic;
   margin: 0;
-  padding: 22px 28px 22px 32px;
-  border-left-width: 4px;
+  padding: 1rem 1.5rem 1rem 1.75rem;
+  border-left-width: 0.25rem;
   border-left-style: solid;
   border-left-color: transparent;
-  border-radius: 0 var(--mkly-radius, 8px) var(--mkly-radius, 8px) 0;
-  line-height: 1.75;
+  border-radius: 0 var(--mkly-radius, 0.5rem) var(--mkly-radius, 0.5rem) 0;
+  line-height: calc(1.75 * var(--_lhs, 1));
   font-size: 1.04em;
 }
 .mkly-newsletter-community__quote p { margin: 0 0 0.5em; }
 .mkly-newsletter-community__quote p:last-of-type { margin-bottom: 0; }
 .mkly-newsletter-community__author {
   display: block;
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top-width: 1px;
+  margin-top: 0.875rem;
+  padding-top: 0.75rem;
+  border-top-width: 0.0625rem;
   border-top-style: solid;
   border-top-color: transparent;
   font-size: 0.86em;
@@ -945,12 +969,12 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── personalNote ── */
 .mkly-newsletter-personalNote {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 20px 24px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 0.875rem 1.25rem;
   font-style: italic;
-  border-radius: var(--mkly-radius, 8px);
-  line-height: 1.75;
-  border-width: 1px;
+  border-radius: var(--mkly-radius, 0.5rem);
+  line-height: calc(1.75 * var(--_lhs, 1));
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
 }
@@ -959,49 +983,49 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── poll ── */
 .mkly-newsletter-poll {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 24px;
-  border-radius: var(--mkly-radius, 8px);
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 1rem 1.25rem;
+  border-radius: var(--mkly-radius, 0.5rem);
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
 }
 .mkly-newsletter-poll__question {
   font-size: 1.1em;
   font-weight: 700;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
   line-height: 1.35;
   letter-spacing: -0.01em;
 }
 .mkly-newsletter-poll__option {
   display: block;
-  margin: 8px 0;
-  padding: 12px 16px;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
   font-size: 0.95em;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  border-width: 1px;
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
-  border-radius: var(--mkly-radius, 8px);
+  border-radius: var(--mkly-radius, 0.5rem);
   line-height: 1.4;
   text-align: center;
 }
 
 /* ── recommendations ── */
 .mkly-newsletter-recommendations {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 20px 24px;
-  border-radius: var(--mkly-radius, 8px);
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--mkly-radius, 0.5rem);
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
 }
 .mkly-newsletter-recommendations__title {
   font-size: 1.1em;
   font-weight: 700;
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
@@ -1010,8 +1034,8 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   padding-left: 1.4em;
 }
 .mkly-newsletter-recommendations li {
-  margin-bottom: 8px;
-  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  line-height: calc(1.6 * var(--_lhs, 1));
   font-size: 0.95em;
 }
 .mkly-newsletter-recommendations li:last-child { margin-bottom: 0; }
@@ -1019,12 +1043,12 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── sponsor ── */
 .mkly-newsletter-sponsor {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 20px 24px;
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 0.875rem 1.25rem;
+  border-width: 0.0625rem;
   border-style: dashed;
   border-color: transparent;
-  border-radius: var(--mkly-radius, 8px);
+  border-radius: var(--mkly-radius, 0.5rem);
 }
 .mkly-newsletter-sponsor__badge {
   display: inline-block;
@@ -1032,25 +1056,25 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 3px 8px;
-  border-radius: 4px;
-  margin-bottom: 10px;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.625rem;
   line-height: 1.3;
 }
 .mkly-newsletter-sponsor__img {
   max-width: 100%;
   display: block;
-  margin-bottom: 12px;
-  border-radius: var(--mkly-radius, 8px);
+  margin-bottom: 0.75rem;
+  border-radius: var(--mkly-radius, 0.5rem);
 }
 .mkly-newsletter-sponsor p {
-  margin: 0 0 8px;
-  line-height: 1.65;
+  margin: 0 0 0.5rem;
+  line-height: calc(1.65 * var(--_lhs, 1));
   font-size: 0.95em;
 }
 .mkly-newsletter-sponsor__link {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 0.5rem;
   font-weight: 600;
   font-size: 0.9em;
   text-decoration: none;
@@ -1059,46 +1083,46 @@ const NEWSLETTER_BASE_STYLES = `/* newsletter kit — base structural styles */
 
 /* ── outro ── */
 .mkly-newsletter-outro {
-  margin: 0 0 calc(24px * var(--_gs));
+  margin: 0 0 calc(1.5rem * var(--_gs));
   text-align: center;
-  padding: 24px;
+  padding: 1rem 1.25rem;
 }
 .mkly-newsletter-outro p {
-  margin: 0 0 8px;
-  line-height: 1.7;
+  margin: 0 0 0.5rem;
+  line-height: calc(1.7 * var(--_lhs, 1));
   font-size: 1.02em;
 }
 .mkly-newsletter-outro .mkly-newsletter-outro__cta {
   display: inline-block;
-  margin-top: 16px;
+  margin-top: 1rem;
   font-weight: 600;
   font-size: 0.9em;
   text-decoration: none !important;
-  padding: 12px 28px;
-  border-radius: var(--mkly-radius, 8px);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--mkly-radius, 0.5rem);
   letter-spacing: 0.01em;
   line-height: 1.4;
 }
 
 /* ── custom ── */
 .mkly-newsletter-custom {
-  margin: 0 0 calc(24px * var(--_gs));
-  padding: 20px 24px;
-  border-radius: var(--mkly-radius, 8px);
-  border-width: 1px;
+  margin: 0 0 calc(1.5rem * var(--_gs));
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--mkly-radius, 0.5rem);
+  border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
 }
 .mkly-newsletter-custom__title {
   font-size: 1.1em;
   font-weight: 700;
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
 .mkly-newsletter-custom p {
-  margin: 0 0 8px;
-  line-height: 1.65;
+  margin: 0 0 0.5rem;
+  line-height: calc(1.65 * var(--_lhs, 1));
   font-size: 0.95em;
 }`;
 

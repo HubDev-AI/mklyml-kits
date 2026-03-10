@@ -1,7 +1,7 @@
 {
   "name": "@mklyml/kits",
   "version": "0.1.2",
-  "license": "Apache-2.0",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "description": "Block kits for mkly — newsletter and documentation block types",
   "type": "module",
   "exports": {
@@ -12,6 +12,12 @@
     "./docs": {
       "types": "./dist/docs.d.ts",
       "import": "./dist/docs.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "newsletter": ["dist/newsletter.d.ts"],
+      "docs": ["dist/docs.d.ts"]
     }
   },
   "files": ["dist"],

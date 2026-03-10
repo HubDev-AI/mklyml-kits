@@ -1,0 +1,8 @@
+.history
+.DS_Store
+.env
+node_modules
+dist
+
+.entire/
+bun.lock

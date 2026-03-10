@@ -40,6 +40,7 @@ const itemSchema: BlockSchema = {
     image: optionalUrl.describe('Item thumbnail image'),
     link: optionalUrl.describe('Link to full article'),
     source: optionalString.describe('Source publication name'),
+    date: optionalString.describe('Publication date or metadata text'),
   }),
   contentMode: 'mixed',
 };
