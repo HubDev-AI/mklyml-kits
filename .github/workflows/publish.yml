@@ -24,14 +24,11 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Clone dependencies
-        run: |
-          git clone --depth 1 https://github.com/HubDev-AI/mklyml.git ../mkly
-
       - name: Install dependencies
         run: |
-          cd ../mkly && bun install --frozen-lockfile
-          cd $GITHUB_WORKSPACE && bun install --frozen-lockfile
+          cd newsletter && bun install && cd ..
+          cd docs && bun install && cd ..
+          bun install
 
       - name: Validate
         run: |
@@ -42,6 +39,7 @@ jobs:
         run: bun run build
 
       - name: Publish to npm
+        if: env.NODE_AUTH_TOKEN != ''
         run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
