@@ -42,6 +42,7 @@ jobs:
         run: bun run build
 
       - name: Publish to npm
+        if: env.NODE_AUTH_TOKEN != ''
         run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
