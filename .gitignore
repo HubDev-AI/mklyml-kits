@@ -6,3 +6,10 @@ dist
 
 .entire/
 bun.lock
+
+# Local tooling artifacts
+.memsearch/
+.playwright-mcp/
+playwright-report/
+test-results/
+.last-run.json
