@@ -28,11 +28,11 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@mklyml/core": "^0.1.0",
+    "@mklyml/core": "^0.2.0",
     "zod": "^4.3.6"
   },
   "peerDependencies": {
-    "@mklyml/core": ">=0.1.0"
+    "@mklyml/core": ">=0.2.0"
   },
   "devDependencies": {
     "tsup": "8.5.0",
