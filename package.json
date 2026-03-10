@@ -1,6 +1,6 @@
 {
   "name": "@mklyml/kits",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "PolyForm-Noncommercial-1.0.0",
   "description": "Block kits for mkly — newsletter and documentation block types",
   "type": "module",
@@ -16,11 +16,17 @@
   },
   "typesVersions": {
     "*": {
-      "newsletter": ["dist/newsletter.d.ts"],
-      "docs": ["dist/docs.d.ts"]
+      "newsletter": [
+        "dist/newsletter.d.ts"
+      ],
+      "docs": [
+        "dist/docs.d.ts"
+      ]
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "bun run build",
